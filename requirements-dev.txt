@@ -1,0 +1,6 @@
+Django
+pytz
+flake8
+black
+isort
+coverage
