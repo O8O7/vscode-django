@@ -51,4 +51,59 @@ python -m black {ファイル名 or ディレクトリ名} --check
 coverage run --source='.' manage.py test
 
 coverage report # カバレッジレポート表示
+coverage report -m --skip-covered # 網羅率100%のファイルをスキップ
+coverage html # htmlとしてレポートを出力
+```
+
+## settings.pyの設定
+```python
+LANGUAGE_CODE = "ja"
+
+TIME_ZONE = "Asia/Tokyo"
+
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# ログ出力先のディレクトリを設定する
+if DEBUG:
+    LOG_BASE_DIR = Path(BASE_DIR / "logs")
+else:
+    LOG_BASE_DIR = Path("/var/log/app")
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"simple": {"format": "%(asctime)s [%(levelname)s] %(message)s"}},
+    "handlers": {
+        "info": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": LOG_BASE_DIR / "info.log",
+            "formatter": "simple",
+        },
+        "warning": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": LOG_BASE_DIR / "warning.log",
+            "formatter": "simple",
+        },
+        "error": {
+            "level": "ERROR",
+            "class": "logging.FileHandler",
+            "filename": LOG_BASE_DIR / "error.log",
+            "formatter": "simple",
+        },
+    },
+    "root": {
+        "handlers": ["info", "warning", "error"],
+        "level": "INFO",
+    },
+}
+
 ```
