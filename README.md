@@ -56,7 +56,12 @@ coverage html # htmlとしてレポートを出力
 ```
 
 ## settings.pyの設定
+
 ```python
+
+# Templates
+# "DIRS": [BASE_DIR / "templates"]
+
 LANGUAGE_CODE = "ja"
 
 TIME_ZONE = "Asia/Tokyo"
