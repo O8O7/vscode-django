@@ -1,8 +1,31 @@
 {
-    "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "python.linting.flake8Args": ["--max-line-length 100"],
     "editor.codeActionsOnSave": {
-        "source.organizeImports": true,
+        "source.organizeImports": true
+    },
+    "[python]": {
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 4
+    },
+    "python.linting.flake8Args": ["--max-line-length 100"],
+    "python.formatting.provider": "black",
+    "[django-html]": {
+        "editor.defaultFormatter": null,
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2
+    },
+    "files.associations": {
+        "**/templates/**/*.html": "django-html",
+        "**/templates/**/*": "django-txt",
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "beautify.language": {
+        "html": [
+            "htm",
+            "html",
+            "django-html",
+        ]
     }
 }
